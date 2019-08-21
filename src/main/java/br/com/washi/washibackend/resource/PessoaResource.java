@@ -25,7 +25,7 @@ public class PessoaResource {
     }
 
     @GetMapping("{codigo}")
-    public Pessoa buscar(@PathVariable int codigo) {
+    public Pessoa buscar(@PathVariable int codigo){
         return repository.findById(codigo).get();
     }
 
