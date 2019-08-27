@@ -13,7 +13,7 @@ public class Pessoa {
     private int codigo;
 
     @Column(name="ENDCOD", length = 10, nullable = false)
-    private int endereco;
+    private Endereco endereco;
 
     @Column(name="CPFCPJ", length = 12, nullable = false)
     private String cpfcnpj;
@@ -30,11 +30,18 @@ public class Pessoa {
     @Column(name = "TELNUM", length = 10, nullable = false)
     private int telefone;
 
+    @Column(name="PESROL", length = 30, nullable = false) // ver com o Alvin o que é PESROL
+    private String pesrol;
+
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public void setEndereco(int endereco) {
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
@@ -62,9 +69,7 @@ public class Pessoa {
         return codigo;
     }
 
-    public int getEndereco() {
-        return endereco;
-    }
+
 
     public String getCpfcnpj() {
         return cpfcnpj;
