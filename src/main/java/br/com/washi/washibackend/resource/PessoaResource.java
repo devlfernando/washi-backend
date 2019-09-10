@@ -1,15 +1,11 @@
 package br.com.washi.washibackend.resource;
 
-
 import br.com.washi.washibackend.entity.Pessoa;
 import br.com.washi.washibackend.repository.PessoaRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,41 +13,35 @@ import java.util.List;
 public class PessoaResource {
 
     @Autowired
-    private PessoaRepository repository;
+    private PessoaRepository rep;
 
     @GetMapping
     public List<Pessoa> listar(){
-        return repository.findAll();
+        return rep.findAll();
     }
 
-    @GetMapping("{codigo}")
-    public Pessoa buscar(@PathVariable int codigo){
-        return repository.findById(codigo).get();
+    @GetMapping("{id}")
+    public Pessoa buscar(@PathVariable int id){
+        return rep.findById(id).get();
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Pessoa cadastrar(@RequestBody Pessoa pessoa) {
-        return repository.save(pessoa);
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Pessoa cadastrar(@RequestBody Pessoa pessoa){
+        return rep.save(pessoa);
     }
 
-    @PutMapping("{codigo}")
-    public ResponseEntity<Pessoa> atualizar(@PathVariable int codigo, @Valid @RequestBody Pessoa pessoa) {
-        Pessoa existente = repository.getOne(codigo); // vai verificar a pessoa que está no banco
-        if (existente == null) {
-            return ResponseEntity.notFound().build(); // equivalente ao 404
-        }
-
-        BeanUtils.copyProperties(pessoa, existente, "codigo"); // copiar as propriedades existentes, menos o código.
-
-        existente = repository.save(existente); // salvando a alteração
-
-        return ResponseEntity.ok(existente); // retornar o registro
+    @PutMapping("{id}")
+    public Pessoa atualizar(@RequestBody Pessoa pessoa,
+                           @PathVariable int id){
+        pessoa.setCodigo(id);
+        return rep.save(pessoa);
     }
 
     @DeleteMapping("{codigo}")
     public void remover(@PathVariable int codigo){
-        repository.deleteById(codigo);
+        rep.deleteById(codigo);
     }
 
 }
+
