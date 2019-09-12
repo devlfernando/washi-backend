@@ -4,6 +4,7 @@ import br.com.washi.washibackend.entity.Pessoa;
 import br.com.washi.washibackend.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,6 +42,17 @@ public class PessoaResource {
     @DeleteMapping("{codigo}")
     public void remover(@PathVariable int codigo){
         rep.deleteById(codigo);
+    }
+
+    @GetMapping("auth")
+    public ResponseEntity auth(@RequestBody Pessoa pessoa){
+        Pessoa p = rep.findByEmailAndSenha(pessoa.getEmail(), pessoa.getEmail());
+
+        if(p == null){
+            return ResponseEntity.notFound().build(); // equivalente ao 404
+        } else {
+            return ResponseEntity.ok(p); // retornar o registro
+        }
     }
 
 }
