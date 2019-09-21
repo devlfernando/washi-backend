@@ -1,9 +1,7 @@
 package br.com.washi.washibackend.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "T_PRODUTO")
 @Entity
@@ -21,6 +19,9 @@ public class Produto {
 
     @Column(name = "PDTIOFVLR")
     private double iof;
+
+    @OneToMany(mappedBy = "produto")
+    private List<Solicitacao> solicitacoes;
 
     public int getCodigo() {
         return codigo;

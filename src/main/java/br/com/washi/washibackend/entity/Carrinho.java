@@ -1,9 +1,7 @@
 package br.com.washi.washibackend.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "T_CARRINHO")
 @Entity
@@ -13,8 +11,6 @@ public class Carrinho {
     @Column(name = "CARCOD")
     private int codigo;
 
-    @Column(name = "PTDPESCOD")
-    private Pessoa pessoa;
 
     @Column(name = "CARSTT")
     private String status;
@@ -25,12 +21,19 @@ public class Carrinho {
     @Column(name = "CARTOTVLR")
     private double valor;
 
+    @OneToOne(mappedBy = "carrinho")
+    private Pagamento pagamento;
+
+    @OneToMany(mappedBy = "carrinho")
+    private List<Entrega> entregas;
+
+    @ManyToOne
+    private Pessoa pessoa;
+
+    //FAZER RELACIONAMENTO ENTRE CARRINHO E SOLICITAÇÃO (ManyTOMany)
+
     public int getCodigo() {
         return codigo;
-    }
-
-    public Pessoa getPessoa() {
-        return pessoa;
     }
 
     public String getStatus() {
@@ -47,10 +50,6 @@ public class Carrinho {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
     }
 
     public void setStatus(String status) {

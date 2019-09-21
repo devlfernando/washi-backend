@@ -1,9 +1,6 @@
 package br.com.washi.washibackend.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Table(name = "T_PAGAMENTO")
@@ -14,15 +11,19 @@ public class Pagamento {
     @Column(name = "PGTCOD")
     private int codigo;
 
-    private FormaPagamento formaPagamento;
 
-    private Carrinho carrinho;
 
     @Column(name = "PGTVLR")
     private double valor;
 
     @Column(name = "PGTDAT")
     private Date dataPagamento;
+
+    @OneToOne
+    private Carrinho carrinho;
+
+    @ManyToOne
+    private FormaPagamento formaPagamento;
 
     public int getCodigo() {
         return codigo;

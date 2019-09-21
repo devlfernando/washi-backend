@@ -5,6 +5,7 @@ import br.com.washi.washibackend.entity.enums.Cidade;
 import br.com.washi.washibackend.entity.enums.Estado;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="T_PESSOA")
@@ -46,6 +47,15 @@ public class Pessoa {
 
     @Column(name="ENDEST", length = 2)
     private Estado endEstado;
+
+    @OneToMany(mappedBy = "pessoa")
+    private List<Solicitacao> solicitacoes;
+
+    @OneToMany(mappedBy = "pessoa")
+    private List<Entrega> entregas;
+
+    @OneToMany(mappedBy = "pessoa")
+    private List<Carrinho> carrinhos;
 
     public int getCodigo() {
         return codigo;

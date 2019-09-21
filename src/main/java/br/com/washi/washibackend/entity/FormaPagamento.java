@@ -1,9 +1,7 @@
 package br.com.washi.washibackend.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "T_PAGAMENTO_FORMA")
 @Entity
@@ -14,6 +12,9 @@ public class FormaPagamento {
     private int codigo;
     @Column(name = "PGTFRMDES")
     private String descricao;
+
+    @OneToMany(mappedBy = "formaPagamento")
+    private List<Pagamento> pagamentos;
 
     public int getCodigo() {
         return codigo;

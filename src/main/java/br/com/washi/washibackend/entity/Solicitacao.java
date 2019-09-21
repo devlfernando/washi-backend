@@ -12,19 +12,25 @@ public class Solicitacao {
     @Column(name="SLTQTD", nullable = false)
     private int quantidade;
 
-    private Pessoa pessoa;
-
-    private Servico servico;
-
-    private ServicoDetalhe servicoDetalhe;
-
-    private Produto produto;
-
     @Column(name = "SLTLQDVLR")
     private double valorServico;
 
     @Column(name = "IOFLQDVLR")
     private double iof;
+
+    @ManyToOne()
+    private Pessoa pessoa;
+
+    @ManyToOne()
+    private Servico servico;
+
+    @ManyToOne()
+    private ServicoDetalhe servicoDetalhe;
+
+    @ManyToOne()
+    private Produto produto;
+
+    //FAZER RELACIONAMENTO ENTRE SOLICITAÇÃO E CARRINHO (ManyTOMany)
 
     public int getCodigo() {
         return codigo;

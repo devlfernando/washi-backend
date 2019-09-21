@@ -1,9 +1,6 @@
 package br.com.washi.washibackend.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Table(name = "T_ENTREGA")
@@ -14,11 +11,6 @@ public class Entrega {
     @Column(name = "ENTCOD")
     private int codigo;
 
-    @Column(name = "CARCOD")
-    private Carrinho carrinho;
-
-    @Column(name = "ENTPESCOD")
-    private Pessoa pessoa;
 
     @Column(name = "STTFLG")
     private String status;
@@ -32,12 +24,14 @@ public class Entrega {
     @Column(name = "ENTDAT")
     private Date entrega;
 
+    @ManyToOne
+    private Pessoa pessoa;
+
+    @ManyToOne
+    private Carrinho carrinho;
+
     public int getCodigo() {
         return codigo;
-    }
-
-    public Pessoa getPessoa() {
-        return pessoa;
     }
 
     public String getStatus() {
@@ -58,10 +52,6 @@ public class Entrega {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
     }
 
     public void setStatus(String status) {

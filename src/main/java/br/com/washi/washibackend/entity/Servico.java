@@ -1,6 +1,7 @@
 package br.com.washi.washibackend.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table (name="T_SERVICO")
 @Entity
@@ -18,6 +19,9 @@ public class Servico {
 
     @Column(name = "SVCIOFVLR")
     private double iof;
+
+    @OneToMany(mappedBy = "servico")
+    private List<Solicitacao> solicitacoes;
 
     public int getSVCCOD() {
         return SVCCOD;
