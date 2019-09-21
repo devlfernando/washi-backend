@@ -1,5 +1,6 @@
 package br.com.washi.washibackend.entity;
 import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "T_SOLICITACAO")
 @Entity
@@ -30,7 +31,10 @@ public class Solicitacao {
     @ManyToOne()
     private Produto produto;
 
-    //FAZER RELACIONAMENTO ENTRE SOLICITAÇÃO E CARRINHO (ManyTOMany)
+    @ManyToMany()
+    @JoinTable(name = "T_SOLICITACAO", joinColumns = {@JoinColumn(name = "SLTCOD")},
+            inverseJoinColumns = {@JoinColumn(name = "CARCOD")})
+    private List<Carrinho> carrinhos;
 
     public int getCodigo() {
         return codigo;

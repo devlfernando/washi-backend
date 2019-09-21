@@ -30,7 +30,8 @@ public class Carrinho {
     @ManyToOne
     private Pessoa pessoa;
 
-    //FAZER RELACIONAMENTO ENTRE CARRINHO E SOLICITAÇÃO (ManyTOMany)
+    @ManyToMany(mappedBy = "carrinhos")
+    private List<Solicitacao> solicitacoes;
 
     public int getCodigo() {
         return codigo;
