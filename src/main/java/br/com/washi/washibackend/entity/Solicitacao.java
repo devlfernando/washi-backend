@@ -3,11 +3,9 @@ import javax.persistence.*;
 
 @Table(name = "T_SOLICITACAO")
 @Entity
-@SequenceGenerator(name = "solicitacao",sequenceName = "T_SOLICITACAO_SQ", allocationSize = 1)
 public class Solicitacao {
 
     @Id
-    @GeneratedValue(generator = "solicitacao", strategy = GenerationType.SEQUENCE)
     @Column(name = "SLTCOD")
     private int codigo;
 
@@ -26,7 +24,7 @@ public class Solicitacao {
     private double valorServico;
 
     @Column(name = "IOFLQDVLR")
-    private double imposto;
+    private double iof;
 
     public int getCodigo() {
         return codigo;
@@ -56,8 +54,8 @@ public class Solicitacao {
         return valorServico;
     }
 
-    public double getImposto() {
-        return imposto;
+    public double getIof() {
+        return iof;
     }
 
     public void setCodigo(int codigo) {
@@ -88,7 +86,7 @@ public class Solicitacao {
         this.valorServico = valorServico;
     }
 
-    public void setImposto(double imposto) {
-        this.imposto = imposto;
+    public void setIof(double iof) {
+        this.iof = iof;
     }
 }
