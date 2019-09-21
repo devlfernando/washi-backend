@@ -13,7 +13,7 @@ public class ServicoDetalhe {
     @Column(name = "SVCDTLCOD")
     private int codigo;
 
-    @Column(name = "SVCDTLDES")
+    @Column(name = "SVCDTLDES", length = 100)
     private String descricaoItem;
 
     @Column(name = "SVCDTLVLR")

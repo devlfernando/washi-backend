@@ -10,7 +10,7 @@ public class Servico {
     @Column(name = "SVCCOD")
     private int SVCCOD;
 
-    @Column(name = "SVCDES")
+    @Column(name = "SVCDES", length = 100)
     private String descricao;
 
     @Column(name = "SVCVLR")
