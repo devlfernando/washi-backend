@@ -18,7 +18,7 @@ public class Servico {
 
     @Column(name = "SVCIOFVLR")
     private double iof;
-    
+
     public int getSVCCOD() {
         return SVCCOD;
     }
