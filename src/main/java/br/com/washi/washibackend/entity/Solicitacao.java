@@ -34,21 +34,6 @@ public class Solicitacao {
         return quantidade;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public Servico getServico() {
-        return servico;
-    }
-
-    public ServicoDetalhe getServicoDetalhe() {
-        return servicoDetalhe;
-    }
-
-    public Produto getProduto() {
-        return produto;
-    }
 
     public double getValorServico() {
         return valorServico;
@@ -64,22 +49,6 @@ public class Solicitacao {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
-
-    public void setServico(Servico servico) {
-        this.servico = servico;
-    }
-
-    public void setServicoDetalhe(ServicoDetalhe servicoDetalhe) {
-        this.servicoDetalhe = servicoDetalhe;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
     }
 
     public void setValorServico(double valorServico) {
