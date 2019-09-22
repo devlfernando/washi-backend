@@ -12,6 +12,7 @@ import javax.persistence.*;
 public class Pessoa {
 
     @Id
+    @Column(name = "PESCOD")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigo;
 
