@@ -7,46 +7,45 @@ import br.com.washi.washibackend.entity.enums.Estado;
 import javax.persistence.*;
 
 @Entity
-@Table(name="T_PESSOA")
-@SequenceGenerator(name="pessoa",sequenceName="T_PESSOA_SQ", allocationSize = 1)
+@Table(name = "T_PESSOA")
+//@SequenceGenerator(name = "pessoa", sequenceName = "T_PESSOA_SQ", allocationSize = 1)
 public class Pessoa {
 
     @Id
-    @Column(name="PESCOD")
-    @GeneratedValue(generator = "pessoa", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigo;
 
-    @Column(name="PESNOM", length = 100)
+    @Column(name = "PESNOM", length = 100)
     private String nome;
 
-    @Column(name="PESEML", length = 100)
+    @Column(name = "PESEML", length = 100)
     private String email;
 
-    @Column(name="PESSEN", length = 25)
+    @Column(name = "PESSEN", length = 25)
     private String senha;
 
-    @Column(name="CPFCPJ", length = 12)
+    @Column(name = "CPFCPJ", length = 12)
     private String documento;
 
-    @Column(name="TELNUM", length = 12)
+    @Column(name = "TELNUM", length = 12)
     private String telefone;
 
-    @Column(name="ENDCEP", length = 40)
+    @Column(name = "ENDCEP", length = 40)
     private String endCep;
 
-    @Column(name="ENDDES", length = 50)
+    @Column(name = "ENDDES", length = 50)
     private String endDescricao;
 
-    @Column(name="ENDNUM", length = 8)
+    @Column(name = "ENDNUM", length = 8)
     private String endNumero;
 
-    @Column(name="ENDBAI", length = 50)
+    @Column(name = "ENDBAI", length = 50)
     private Bairro endBairro;
 
-    @Column(name="ENDCID", length = 50)
+    @Column(name = "ENDCID", length = 50)
     private Cidade endCidade;
 
-    @Column(name="ENDEST", length = 2)
+    @Column(name = "ENDEST", length = 2)
     private Estado endEstado;
 
     public int getCodigo() {
