@@ -14,39 +14,39 @@ import java.util.List;
 public class PessoaResource {
 
     @Autowired
-    private PessoaRepository rep;
+    private PessoaRepository repository;
 
     @GetMapping
     public List<Pessoa> listar() {
-        return rep.findAll();
+        return repository.findAll();
     }
 
     @GetMapping("{id}")
     public Pessoa buscar(@PathVariable int id) {
-        return rep.findById(id).get();
+        return repository.findById(id).get();
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public Pessoa cadastrar(@RequestBody Pessoa pessoa) {
-        return rep.save(pessoa);
+        return repository.save(pessoa);
     }
 
     @PutMapping("{id}")
     public Pessoa atualizar(@RequestBody Pessoa pessoa,
                             @PathVariable int id) {
         pessoa.setCodigo(id);
-        return rep.save(pessoa);
+        return repository.save(pessoa);
     }
 
     @DeleteMapping("{codigo}")
     public void remover(@PathVariable int codigo) {
-        rep.deleteById(codigo);
+        repository.deleteById(codigo);
     }
 
     @GetMapping("auth")
     public ResponseEntity auth(@RequestBody Pessoa pessoa) {
-        Pessoa washiPessoa = rep.findByEmailAndSenha(pessoa.getEmail(), pessoa.getEmail());
+        Pessoa washiPessoa = repository.findByEmailAndSenha(pessoa.getEmail(), pessoa.getEmail());
 
         if (washiPessoa == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
