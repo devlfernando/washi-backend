@@ -8,12 +8,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "T_PESSOA")
-//@SequenceGenerator(name = "pessoa", sequenceName = "T_PESSOA_SQ", allocationSize = 1)
 public class Pessoa {
 
     @Id
     @Column(name = "PESCOD")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigo;
 
     @Column(name = "PESNOM", length = 100)
