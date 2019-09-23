@@ -46,7 +46,7 @@ public class PessoaResource {
 
     @GetMapping("auth")
     public ResponseEntity auth(@RequestBody Pessoa pessoa) {
-        Pessoa washiPessoa = repository.findByEmailAndSenha(pessoa.getEmail(), pessoa.getEmail());
+        Pessoa washiPessoa = repository.findByEmailEqualsAndSenhaEquals(pessoa.getEmail(), pessoa.getSenha());
 
         if (washiPessoa == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
