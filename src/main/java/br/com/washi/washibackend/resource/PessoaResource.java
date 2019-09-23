@@ -14,44 +14,44 @@ import java.util.List;
 public class PessoaResource {
 
     @Autowired
-    private PessoaRepository rep;
+    private PessoaRepository repository;
 
     @GetMapping
-    public List<Pessoa> listar(){
-        return rep.findAll();
+    public List<Pessoa> listar() {
+        return repository.findAll();
     }
 
     @GetMapping("{id}")
-    public Pessoa buscar(@PathVariable int id){
-        return rep.findById(id).get();
+    public Pessoa buscar(@PathVariable int id) {
+        return repository.findById(id).get();
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Pessoa cadastrar(@RequestBody Pessoa pessoa){
-        return rep.save(pessoa);
+    public Pessoa cadastrar(@RequestBody Pessoa pessoa) {
+        return repository.save(pessoa);
     }
 
     @PutMapping("{id}")
     public Pessoa atualizar(@RequestBody Pessoa pessoa,
-                           @PathVariable int id){
+                            @PathVariable int id) {
         pessoa.setCodigo(id);
-        return rep.save(pessoa);
+        return repository.save(pessoa);
     }
 
     @DeleteMapping("{codigo}")
-    public void remover(@PathVariable int codigo){
-        rep.deleteById(codigo);
+    public void remover(@PathVariable int codigo) {
+        repository.deleteById(codigo);
     }
 
     @GetMapping("auth")
-    public ResponseEntity auth(@RequestBody Pessoa pessoa){
-        Pessoa p = rep.findByEmailAndSenha(pessoa.getEmail(), pessoa.getEmail());
+    public ResponseEntity auth(@RequestBody Pessoa pessoa) {
+        Pessoa washiPessoa = repository.findByEmailEqualsAndSenhaEquals(pessoa.getEmail(), pessoa.getSenha());
 
-        if(p == null){
-            return ResponseEntity.notFound().build(); // equivalente ao 404
+        if (washiPessoa == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         } else {
-            return ResponseEntity.ok(p); // retornar o registro
+            return ResponseEntity.ok(washiPessoa);
         }
     }
 
