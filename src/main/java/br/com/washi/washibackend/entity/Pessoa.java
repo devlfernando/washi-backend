@@ -39,12 +39,15 @@ public class Pessoa {
     private String endNumero;
 
     @Column(name = "ENDBAI", length = 50)
+    @Enumerated(EnumType.STRING)
     private Bairro endBairro;
 
     @Column(name = "ENDCID", length = 50)
+    @Enumerated(EnumType.STRING)
     private Cidade endCidade;
 
     @Column(name = "ENDEST", length = 2)
+    @Enumerated(EnumType.STRING)
     private Estado endEstado;
 
     public int getCodigo() {
