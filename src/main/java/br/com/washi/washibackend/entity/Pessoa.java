@@ -9,12 +9,10 @@ import java.util.List;
 
 @Entity
 @Table(name="T_PESSOA")
-@SequenceGenerator(name="pessoa",sequenceName="T_PESSOA_SQ", allocationSize = 1)
 public class Pessoa {
 
     @Id
     @Column(name="PESCOD")
-    @GeneratedValue(generator = "pessoa", strategy = GenerationType.SEQUENCE)
     private int codigo;
 
     @Column(name="PESNOM", length = 100)
