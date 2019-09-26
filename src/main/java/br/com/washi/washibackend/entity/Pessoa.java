@@ -5,50 +5,57 @@ import br.com.washi.washibackend.entity.enums.Cidade;
 import br.com.washi.washibackend.entity.enums.Estado;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "T_PESSOA")
+@Table(name="T_PESSOA")
 public class Pessoa {
 
     @Id
-    @Column(name = "PESCOD")
+    @Column(name="PESCOD")
     private int codigo;
 
-    @Column(name = "PESNOM", length = 100)
+    @Column(name="PESNOM", length = 100)
     private String nome;
 
-    @Column(name = "PESEML", length = 100)
+    @Column(name="PESEML", length = 100)
     private String email;
 
-    @Column(name = "PESSEN", length = 25)
+    @Column(name="PESSEN", length = 25)
     private String senha;
 
-    @Column(name = "CPFCPJ", length = 12)
+    @Column(name="CPFCPJ", length = 12)
     private String documento;
 
-    @Column(name = "TELNUM", length = 12)
+    @Column(name="TELNUM", length = 12)
     private String telefone;
 
-    @Column(name = "ENDCEP", length = 40)
+    @Column(name="ENDCEP", length = 40)
     private String endCep;
 
-    @Column(name = "ENDDES", length = 50)
+    @Column(name="ENDDES", length = 50)
     private String endDescricao;
 
-    @Column(name = "ENDNUM", length = 8)
+    @Column(name="ENDNUM", length = 8)
     private String endNumero;
 
-    @Column(name = "ENDBAI", length = 50)
-    @Enumerated(EnumType.STRING)
+    @Column(name="ENDBAI", length = 50)
     private Bairro endBairro;
 
-    @Column(name = "ENDCID", length = 50)
-    @Enumerated(EnumType.STRING)
+    @Column(name="ENDCID", length = 50)
     private Cidade endCidade;
 
-    @Column(name = "ENDEST", length = 2)
-    @Enumerated(EnumType.STRING)
+    @Column(name="ENDEST", length = 2)
     private Estado endEstado;
+
+    @OneToMany(mappedBy = "pessoa")
+    private List<Carrinho> carrinhos;
+
+    @OneToMany(mappedBy = "pessoa")
+    private List<Entrega> entregas;
+
+    @OneToMany(mappedBy = "pessoa")
+    private List<Solicitacao> solicitacoes;
 
     public int getCodigo() {
         return codigo;
