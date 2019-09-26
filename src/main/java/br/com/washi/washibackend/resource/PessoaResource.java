@@ -44,7 +44,7 @@ public class PessoaResource {
         repository.deleteById(codigo);
     }
 
-    @GetMapping("auth")
+    @PostMapping
     public ResponseEntity auth(@RequestBody Pessoa pessoa) {
         Pessoa washiPessoa = repository.findByEmailEqualsAndSenhaEquals(pessoa.getEmail(), pessoa.getSenha());
 
