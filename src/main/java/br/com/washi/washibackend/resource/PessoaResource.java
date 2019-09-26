@@ -26,12 +26,14 @@ public class PessoaResource {
         return repository.findById(id).get();
     }
 
+    //POST
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public Pessoa cadastrar(@RequestBody Pessoa pessoa) {
         return repository.save(pessoa);
     }
 
+    //PUT
     @PutMapping("{id}")
     public Pessoa atualizar(@RequestBody Pessoa pessoa,
                             @PathVariable int id) {
@@ -39,12 +41,14 @@ public class PessoaResource {
         return repository.save(pessoa);
     }
 
+    //DELETE
     @DeleteMapping("{codigo}")
     public void remover(@PathVariable int codigo) {
         repository.deleteById(codigo);
     }
 
-    @GetMapping("auth")
+    //@POST
+    @PostMapping("auth")
     public ResponseEntity auth(@RequestBody Pessoa pessoa) {
         Pessoa washiPessoa = repository.findByEmailEqualsAndSenhaEquals(pessoa.getEmail(), pessoa.getSenha());
 
