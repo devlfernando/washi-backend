@@ -46,7 +46,7 @@ public class PessoaResource {
     public void remover(@PathVariable int codigo) {
         repository.deleteById(codigo);
     }
-    
+
     //@POST
     @PostMapping("auth")
     public ResponseEntity auth(@RequestBody Pessoa pessoa) {
