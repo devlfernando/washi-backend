@@ -42,5 +42,21 @@ public class SolicitacaoResource {
     public void remover(@PathVariable int codigo){
         rep.deleteById(codigo);
     }
+
+    @GetMapping("{codigo}")
+    public Solicitacao buscarPorCodigo(@PathVariable int codigo){
+        return rep.findSolicitacaoByCodigo(codigo);
+    }
+
+    @GetMapping("{codigo}")
+    public List<Solicitacao> buscarSolicitacoesExcluindoId(@PathVariable int codigo){
+        return rep.findSolicitacaoByPessoaCodigoIsNotLike(codigo);
+    }
+    @GetMapping("{codigo}")
+    public List<Solicitacao> buscarSolicitacoesIncluindoId(@PathVariable int codigo){
+        return rep.findSolicitacaoByPessoaCodigoIsLike(codigo);
+    }
 }
+
+
 

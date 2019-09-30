@@ -11,7 +11,6 @@ public class Entrega {
     @Column(name = "ENTCOD")
     private int codigo;
 
-
     @Column(name = "STTFLG")
     private String status;
 

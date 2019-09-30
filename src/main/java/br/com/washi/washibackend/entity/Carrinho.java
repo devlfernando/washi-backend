@@ -11,7 +11,6 @@ public class Carrinho {
     @Column(name = "CARCOD")
     private int codigo;
 
-
     @Column(name = "CARSTT")
     private String status;
 

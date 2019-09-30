@@ -11,8 +11,6 @@ public class Pagamento {
     @Column(name = "PGTCOD")
     private int codigo;
 
-
-
     @Column(name = "PGTVLR")
     private double valor;
 
