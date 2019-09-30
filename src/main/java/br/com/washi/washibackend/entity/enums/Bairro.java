@@ -8,7 +8,9 @@ public enum Bairro {
     PINHEIROS("Pinheiros"),
     PARAISO("Paraiso"),
     SAUDE("Saude"),
-    CONSOLACAO("Consolação");
+    CONSOLACAO("Consolação"),
+    JARDIM_FLORES("Jardim das Flores"),
+    VILA_MARTINS("Vila Martins");
 
     @JsonValue
     private final String displayName;

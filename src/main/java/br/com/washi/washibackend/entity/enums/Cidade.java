@@ -7,7 +7,9 @@ public enum Cidade {
     ATIBAIA("Atibaia"),
     RIBERAO_PRETO("Ribeirão Preto"),
     SANTOS("Santos"),
-    CAMPOS_JORDAO("Campos de Jordão");
+    CAMPOS_JORDAO("Campos de Jordão"),
+    OSASCO("Osasco"),
+    RIO_CLARO("Rio Claro");
 
     @JsonValue
     private final String displayName;

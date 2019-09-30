@@ -29,8 +29,8 @@ public class Carrinho {
     @ManyToOne
     private Pessoa pessoa;
 
-    @ManyToMany(mappedBy = "carrinhos")
-    private List<Solicitacao> solicitacoes;
+//    @ManyToMany(mappedBy = "carrinhos")
+//    private List<Solicitacao> solicitacoes;
 
     public int getCodigo() {
         return codigo;

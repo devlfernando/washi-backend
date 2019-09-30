@@ -5,7 +5,6 @@ import java.util.List;
 @Table(name = "T_SOLICITACAO")
 @Entity
 public class Solicitacao {
-
     @Id
     @Column(name = "SLTCOD")
     private int codigo;
@@ -13,28 +12,32 @@ public class Solicitacao {
     @Column(name="SLTQTD", nullable = false)
     private int quantidade;
 
-    @Column(name = "SLTLQDVLR")
-    private double valorServico;
+//    @Column(name = "SLTLQDVLR")
+//    private double valorServico;
 
-    @Column(name = "IOFLQDVLR")
-    private double iof;
+//    @Column(name = "IOFLQDVLR")
+//    private double iof;
 
     @ManyToOne()
+    @JoinColumn(name = "PESCOD")
     private Pessoa pessoa;
 
     @ManyToOne()
+    @JoinColumn(name = "SVCCOD")
     private Servico servico;
 
     @ManyToOne()
+    @JoinColumn(name = "SVCDTLCOD")
     private ServicoDetalhe servicoDetalhe;
 
     @ManyToOne()
+    @JoinColumn(name = "PDTCOD")
     private Produto produto;
 
-    @ManyToMany()
-    @JoinTable(name = "T_SOLICITACAO", joinColumns = {@JoinColumn(name = "SLTCOD")},
-            inverseJoinColumns = {@JoinColumn(name = "CARCOD")})
-    private List<Carrinho> carrinhos;
+//    @ManyToMany()
+//    @JoinTable(name = "T_SOLICITACAO", joinColumns = {@JoinColumn(name = "SLTCOD")},
+//            inverseJoinColumns = {@JoinColumn(name = "CARCOD")})
+//    private List<Carrinho> carrinhos;
 
     public int getCodigo() {
         return codigo;
@@ -45,13 +48,13 @@ public class Solicitacao {
     }
 
 
-    public double getValorServico() {
-        return valorServico;
-    }
+//    public double getValorServico() {
+//        return valorServico;
+//    }
 
-    public double getIof() {
-        return iof;
-    }
+//    public double getIof() {
+//        return iof;
+//    }
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
@@ -61,11 +64,11 @@ public class Solicitacao {
         this.quantidade = quantidade;
     }
 
-    public void setValorServico(double valorServico) {
-        this.valorServico = valorServico;
-    }
+//    public void setValorServico(double valorServico) {
+//        this.valorServico = valorServico;
+//    }
 
-    public void setIof(double iof) {
-        this.iof = iof;
-    }
+//    public void setIof(double iof) {
+//        this.iof = iof;
+//    }
 }
