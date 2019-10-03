@@ -50,11 +50,11 @@ public class SolicitacaoResource {
 
     @GetMapping("excludeById/{codigo}")
     public List<Solicitacao> buscarSolicitacoesExcluindoId(@PathVariable int codigo){
-        return rep.findSolicitacaoByPessoaCodigoIsNotLike(codigo);
+        return rep.findSolicitacaoByPessoaCodigoIsNot(codigo);
     }
     @GetMapping("includeById/{codigo}")
     public List<Solicitacao> buscarSolicitacoesIncluindoId(@PathVariable int codigo){
-        return rep.findSolicitacaoByPessoaCodigoIsLike(codigo);
+        return rep.findSolicitacaoByPessoaCodigoEquals(codigo);
     }
 }
 

@@ -18,19 +18,19 @@ public class Solicitacao {
 //    @Column(name = "IOFLQDVLR")
 //    private double iof;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PESCOD")
     private Pessoa pessoa;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "SVCCOD")
     private Servico servico;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "SVCDTLCOD")
     private ServicoDetalhe servicoDetalhe;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PDTCOD")
     private Produto produto;
 
