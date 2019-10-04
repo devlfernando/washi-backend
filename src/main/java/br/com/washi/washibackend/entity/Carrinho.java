@@ -11,9 +11,6 @@ public class Carrinho {
     @Column(name = "CARCOD")
     private int codigo;
 
-    @Column(name = "CARSTT")
-    private String status;
-
     @Column(name = "CARDSC")
     private double desconto;
 
@@ -29,6 +26,9 @@ public class Carrinho {
     @ManyToOne
     private Pessoa pessoa;
 
+    @ManyToOne
+    private CarrinhoStatus carrinhoStatus;
+
 //    @ManyToMany(mappedBy = "carrinhos")
 //    private List<Solicitacao> solicitacoes;
 
@@ -36,31 +36,48 @@ public class Carrinho {
         return codigo;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public double getDesconto() {
-        return desconto;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+
+    public double getDesconto() {
+        return desconto;
     }
 
     public void setDesconto(double desconto) {
         this.desconto = desconto;
     }
 
+    public double getValor() {
+        return valor;
+    }
+
     public void setValor(double valor) {
         this.valor = valor;
+    }
+
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(Pagamento pagamento) {
+        this.pagamento = pagamento;
+    }
+
+    public List<Entrega> getEntregas() {
+        return entregas;
+    }
+
+    public void setEntregas(List<Entrega> entregas) {
+        this.entregas = entregas;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 }

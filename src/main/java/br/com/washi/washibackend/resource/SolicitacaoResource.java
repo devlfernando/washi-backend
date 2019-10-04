@@ -54,6 +54,7 @@ public class SolicitacaoResource {
     }
     @GetMapping("includeById/{codigo}")
     public List<Solicitacao> buscarSolicitacoesIncluindoId(@PathVariable int codigo){
+        //Solicitacao solicitacao = rep.findById(codigo).get();
         return rep.findSolicitacaoByPessoaCodigoEquals(codigo);
     }
 }

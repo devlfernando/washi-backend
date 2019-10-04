@@ -1,4 +1,7 @@
 package br.com.washi.washibackend.entity;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,19 +21,20 @@ public class Solicitacao {
 //    @Column(name = "IOFLQDVLR")
 //    private double iof;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PESCOD")
     private Pessoa pessoa;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SVCCOD")
     private Servico servico;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.TRUE)
     @JoinColumn(name = "SVCDTLCOD")
     private ServicoDetalhe servicoDetalhe;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PDTCOD")
     private Produto produto;
 
