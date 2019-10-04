@@ -2,6 +2,7 @@ package br.com.washi.washibackend.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Table(name = "T_PAGAMENTO")
 @Entity
@@ -17,8 +18,8 @@ public class Pagamento {
     @Column(name = "PGTDAT")
     private Date dataPagamento;
 
-    @OneToOne
-    private Carrinho carrinho;
+    @OneToMany
+    private List<Carrinho> carrinho;
 
     @ManyToOne
     private FormaPagamento formaPagamento;

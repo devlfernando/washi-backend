@@ -11,26 +11,33 @@ public class Carrinho {
     @Column(name = "CARCOD")
     private int codigo;
 
+    @ManyToOne
+    @JoinColumn(name = "PTDPESCOD")
+    private Pessoa pessoa;
+
+    @ManyToOne
+    @JoinColumn(name = "CARSTTCOD")
+    private CarrinhoStatus carrinhoStatus;
+
     @Column(name = "CARDSC")
     private double desconto;
 
     @Column(name = "CARTOTVLR")
     private double valor;
 
-    @OneToOne(mappedBy = "carrinho")
-    private Pagamento pagamento;
+    @OneToMany(mappedBy = "carrinho")
+    private List<Pedido> pedidos;
 
     @OneToMany(mappedBy = "carrinho")
     private List<Entrega> entregas;
 
-    @ManyToOne
-    private Pessoa pessoa;
+    public CarrinhoStatus getCarrinhoStatus() {
+        return carrinhoStatus;
+    }
 
-    @ManyToOne
-    private CarrinhoStatus carrinhoStatus;
-
-//    @ManyToMany(mappedBy = "carrinhos")
-//    private List<Solicitacao> solicitacoes;
+    public void setCarrinhoStatus(CarrinhoStatus carrinhoStatus) {
+        this.carrinhoStatus = carrinhoStatus;
+    }
 
     public int getCodigo() {
         return codigo;
@@ -39,7 +46,6 @@ public class Carrinho {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-
 
     public double getDesconto() {
         return desconto;
@@ -55,14 +61,6 @@ public class Carrinho {
 
     public void setValor(double valor) {
         this.valor = valor;
-    }
-
-    public Pagamento getPagamento() {
-        return pagamento;
-    }
-
-    public void setPagamento(Pagamento pagamento) {
-        this.pagamento = pagamento;
     }
 
     public List<Entrega> getEntregas() {

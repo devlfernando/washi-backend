@@ -21,58 +21,78 @@ public class Solicitacao {
 //    @Column(name = "IOFLQDVLR")
 //    private double iof;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "PESCOD")
     private Pessoa pessoa;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "SVCCOD")
     private Servico servico;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @LazyCollection(LazyCollectionOption.TRUE)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "SVCDTLCOD")
     private ServicoDetalhe servicoDetalhe;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PDTCOD")
     private Produto produto;
 
-//    @ManyToMany()
-//    @JoinTable(name = "T_SOLICITACAO", joinColumns = {@JoinColumn(name = "SLTCOD")},
-//            inverseJoinColumns = {@JoinColumn(name = "CARCOD")})
-//    private List<Carrinho> carrinhos;
+    @OneToMany(mappedBy = "solicitacao")
+    private List<Pedido> pedidos;
 
     public int getCodigo() {
         return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public int getQuantidade() {
         return quantidade;
     }
 
-
-//    public double getValorServico() {
-//        return valorServico;
-//    }
-
-//    public double getIof() {
-//        return iof;
-//    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
-//    public void setValorServico(double valorServico) {
-//        this.valorServico = valorServico;
-//    }
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
 
-//    public void setIof(double iof) {
-//        this.iof = iof;
-//    }
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
+    }
+
+    public ServicoDetalhe getServicoDetalhe() {
+        return servicoDetalhe;
+    }
+
+    public void setServicoDetalhe(ServicoDetalhe servicoDetalhe) {
+        this.servicoDetalhe = servicoDetalhe;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
 }

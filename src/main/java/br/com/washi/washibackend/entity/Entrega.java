@@ -24,6 +24,7 @@ public class Entrega {
     private Date entrega;
 
     @ManyToOne
+    @JoinColumn(name = "ENTPESCOD")
     private Pessoa pessoa;
 
     @ManyToOne
