@@ -1,7 +1,7 @@
 package br.com.washi.washibackend.resource;
 
 import br.com.washi.washibackend.entity.Carrinho;
-import br.com.washi.washibackend.entity.Pessoa;
+import br.com.washi.washibackend.entity.Solicitacao;
 import br.com.washi.washibackend.repository.CarrinhoRepository;
 import br.com.washi.washibackend.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +19,19 @@ public class CarrinhoResouce {
     @Autowired
     private CarrinhoRepository carrinhoRepository;
 
-    @Autowired
-    private PessoaRepository pessoaRepository;
-
     @GetMapping
     public List<Carrinho> listar() {
         return carrinhoRepository.findAll();
     }
 
-    @GetMapping("carrinhoNotPessoa/{id}")
-    public List<Carrinho> findCarrinhoExcludingPessoa(@PathVariable int id) {
-        Pessoa pessoa = pessoaRepository.findById(id).get();
-        return carrinhoRepository.findCarrinhoByPessoaNot(pessoa);
+    @GetMapping("{id}")
+    public Carrinho findByCode(@PathVariable("id") int codigo){
+        return carrinhoRepository.findById(codigo).get();
+    }
+
+    @GetMapping("carrinhoBySolicitacao/{id}/{id}")
+    public List<Carrinho> findCarrinhoByExcludePerson(@PathVariable("id") int carrinho, @PathVariable("id") int pessoa){
+        return carrinhoRepository.findCarrinhoByCarrinhoStatusCodigoGreaterThanAndPessoaCodigoIsNot(carrinho, pessoa);
     }
 
     @GetMapping("carrinhoByPessoa/{id}")

@@ -25,19 +25,9 @@ public class Carrinho {
     @Column(name = "CARTOTVLR")
     private double valor;
 
-    @OneToMany(mappedBy = "carrinho")
-    private List<Pedido> pedidos;
+    //@OneToMany(mappedBy = "carrinho")
+    //private List<Pedido> pedidos;
 
-    @OneToMany(mappedBy = "carrinho")
-    private List<Entrega> entregas;
-
-    public CarrinhoStatus getCarrinhoStatus() {
-        return carrinhoStatus;
-    }
-
-    public void setCarrinhoStatus(CarrinhoStatus carrinhoStatus) {
-        this.carrinhoStatus = carrinhoStatus;
-    }
 
     public int getCodigo() {
         return codigo;
@@ -45,6 +35,22 @@ public class Carrinho {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public CarrinhoStatus getCarrinhoStatus() {
+        return carrinhoStatus;
+    }
+
+    public void setCarrinhoStatus(CarrinhoStatus carrinhoStatus) {
+        this.carrinhoStatus = carrinhoStatus;
     }
 
     public double getDesconto() {
@@ -63,19 +69,4 @@ public class Carrinho {
         this.valor = valor;
     }
 
-    public List<Entrega> getEntregas() {
-        return entregas;
-    }
-
-    public void setEntregas(List<Entrega> entregas) {
-        this.entregas = entregas;
-    }
-
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
 }

@@ -14,8 +14,8 @@ public class CarrinhoStatus {
     @Column(name = "CARSTTDES")
     private String descricao;
 
-    @OneToMany(mappedBy = "carrinhoStatus")
-    private List<Carrinho> carrinhos;
+    //@OneToMany(mappedBy = "carrinhoStatus")
+    //private List<Carrinho> carrinhos;
 
     public int getCodigo() {
         return codigo;
@@ -32,4 +32,5 @@ public class CarrinhoStatus {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
 }

@@ -15,50 +15,47 @@ public class Pessoa {
     @Column(name = "PESCOD")
     private int codigo;
 
-    @Column(name = "PESNOM", length = 100)
+    @Column(name = "PESNOM")
     private String nome;
 
-    @Column(name = "PESEML", length = 100)
+    @Column(name = "PESEML")
     private String email;
 
-    @Column(name = "PESSEN", length = 25)
+    @Column(name = "PESSEN")
     private String senha;
 
-    @Column(name = "CPFCPJ", length = 12)
+    @Column(name = "CPFCPJ")
     private String documento;
 
-    @Column(name = "TELNUM", length = 12)
+    @Column(name = "TELNUM")
     private String telefone;
 
-    @Column(name = "ENDCEP", length = 40)
+    @Column(name = "ENDCEP")
     private String endCep;
 
-    @Column(name = "ENDDES", length = 50)
+    @Column(name = "ENDDES")
     private String endDescricao;
 
-    @Column(name = "ENDNUM", length = 8)
+    @Column(name = "ENDNUM")
     private String endNumero;
 
-    @Column(name = "ENDBAI", length = 50)
+    @Column(name = "ENDBAI")
     @Enumerated(EnumType.STRING)
     private Bairro endBairro;
 
-    @Column(name = "ENDCID", length = 50)
+    @Column(name = "ENDCID")
     @Enumerated(EnumType.STRING)
     private Cidade endCidade;
 
-    @Column(name = "ENDEST", length = 2)
+    @Column(name = "ENDEST")
     @Enumerated(EnumType.STRING)
     private Estado endEstado;
 
-    @OneToMany(mappedBy = "pessoa")
-    private List<Entrega> entregas;
+    //@OneToMany(mappedBy = "pessoa")
+    //private List<Solicitacao> solicitacoes;
 
-    @OneToMany(mappedBy = "pessoa")
-    private List<Solicitacao> solicitacoes;
-
-    @OneToMany(mappedBy = "pessoa")
-    private List<Carrinho> carrinhos;
+    //@OneToMany(mappedBy = "pessoa")
+    //private List<Carrinho> carrinhos;
 
     public int getCodigo() {
         return codigo;

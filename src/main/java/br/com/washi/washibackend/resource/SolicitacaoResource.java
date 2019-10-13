@@ -42,21 +42,6 @@ public class SolicitacaoResource {
     public void remover(@PathVariable int codigo){
         rep.deleteById(codigo);
     }
-
-    @GetMapping("searchById/{codigo}")
-    public Solicitacao buscarPorCodigo(@PathVariable int codigo){
-        return rep.findSolicitacaoByCodigo(codigo);
-    }
-
-    @GetMapping("excludeById/{codigo}")
-    public List<Solicitacao> buscarSolicitacoesExcluindoId(@PathVariable int codigo){
-        return rep.findSolicitacaoByPessoaCodigoIsNot(codigo);
-    }
-    @GetMapping("includeById/{codigo}")
-    public List<Solicitacao> buscarSolicitacoesIncluindoId(@PathVariable int codigo){
-        //Solicitacao solicitacao = rep.findById(codigo).get();
-        return rep.findSolicitacaoByPessoaCodigoEquals(codigo);
-    }
 }
 
 

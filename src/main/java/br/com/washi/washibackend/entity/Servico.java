@@ -3,15 +3,15 @@ package br.com.washi.washibackend.entity;
 import javax.persistence.*;
 import java.util.List;
 
-@Table (name="T_SERVICO")
 @Entity
+@Table (name="T_SERVICO")
 public class Servico {
 
     @Id
     @Column(name = "SVCCOD")
     private int SVCCOD;
 
-    @Column(name = "SVCDES", length = 100)
+    @Column(name = "SVCDES")
     private String descricao;
 
     @Column(name = "SVCVLR")
@@ -20,8 +20,8 @@ public class Servico {
     @Column(name = "SVCIOFVLR")
     private double iof;
 
-    @OneToMany(mappedBy = "servico")
-    private List<Solicitacao> solicitacoes;
+    //@OneToMany(mappedBy = "servico")
+    //private List<Solicitacao> solicitacoes;
 
     public int getSVCCOD() {
         return SVCCOD;

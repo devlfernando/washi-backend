@@ -1,5 +1,8 @@
 package br.com.washi.washibackend.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Date;
 

@@ -5,23 +5,17 @@ import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import java.util.List;
 
-@Table(name = "T_SOLICITACAO")
 @Entity
+@Table(name = "T_SOLICITACAO")
 public class Solicitacao {
     @Id
     @Column(name = "SLTCOD")
     private int codigo;
 
-    @Column(name="SLTQTD", nullable = false)
+    @Column(name="SLTQTD")
     private int quantidade;
 
-//    @Column(name = "SLTLQDVLR")
-//    private double valorServico;
-
-//    @Column(name = "IOFLQDVLR")
-//    private double iof;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PESCOD")
     private Pessoa pessoa;
 
@@ -37,8 +31,8 @@ public class Solicitacao {
     @JoinColumn(name = "PDTCOD")
     private Produto produto;
 
-    @OneToMany(mappedBy = "solicitacao")
-    private List<Pedido> pedidos;
+    //@OneToMany(mappedBy = "solicitacao")
+    //private List<Pedido> pedidos;
 
     public int getCodigo() {
         return codigo;
@@ -87,12 +81,6 @@ public class Solicitacao {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
 }
+
+
