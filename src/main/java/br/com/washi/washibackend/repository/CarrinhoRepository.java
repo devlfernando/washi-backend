@@ -13,16 +13,6 @@ public interface CarrinhoRepository extends JpaRepository<Carrinho, Integer> {
     //Query Alvin
     //@Query ("select a.carcod, D.CARSTTDES, E.SVCDES, C.SLTQTD, A.CARTOTVLR from T_CARRINHO A, T_PEDIDO B, T_SOLICITACAO C, T_CARRINHO_STATUS D, T_SERVICO E where A.CARCOD = B.CARCOD and B.SLTCOD = C.sltcod and D.CARSTTCOD = A.CARSTTCOD and E.SVCCOD = C.SVCCOD and C.PESCOD <> ?1 and E.SVCCOD = 1")
 
-
-    //List<Carrinho> findCarrinhoByPessoaNot(Pessoa pessoa);
-
-    List<Carrinho> findCarrinhoByPessoaCodigoEquals(int codigo);
-
     List<Carrinho> findCarrinhoByCarrinhoStatusCodigoGreaterThanAndPessoaCodigoIsNot(int carrinho, int pessoa);
-
-    //List<Carrinho> findCarrinhoByCarrinhoStatusCodigoGreaterThan(int carrinho);
-
-
-
 
 }

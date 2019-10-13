@@ -29,13 +29,8 @@ public class CarrinhoResouce {
         return carrinhoRepository.findById(codigo).get();
     }
 
-    @GetMapping("carrinhoBySolicitacao/{id}/{id}")
+    @GetMapping("findCarrinhoByExcludePerson/{id}/{id}")
     public List<Carrinho> findCarrinhoByExcludePerson(@PathVariable("id") int carrinho, @PathVariable("id") int pessoa){
         return carrinhoRepository.findCarrinhoByCarrinhoStatusCodigoGreaterThanAndPessoaCodigoIsNot(carrinho, pessoa);
-    }
-
-    @GetMapping("carrinhoByPessoa/{id}")
-    public List<Carrinho> findCarrinhoByPessoa(@PathVariable int id) {
-        return carrinhoRepository.findCarrinhoByPessoaCodigoEquals(id);
     }
 }
