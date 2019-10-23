@@ -27,15 +27,15 @@ public class EntregaResource {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Entrega cadastrar(@RequestBody Entrega pessoa) {
-        return repository.save(pessoa);
+    public Entrega cadastrar(@RequestBody Entrega entrega) {
+        return repository.save(entrega);
     }
 
     @PutMapping("{id}")
-    public Entrega atualizar(@RequestBody Entrega pessoa,
+    public Entrega atualizar(@RequestBody Entrega entrega,
                             @PathVariable int id) {
-        pessoa.setCodigo(id);
-        return repository.save(pessoa);
+        entrega.setCodigo(id);
+        return repository.save(entrega);
     }
 
     @DeleteMapping("{id}")

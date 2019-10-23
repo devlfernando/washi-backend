@@ -1,16 +1,15 @@
 package br.com.washi.washibackend.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "T_ENTREGA_G")
+@SequenceGenerator(name = "entrega", sequenceName = "T_SQ_ENTREGA", allocationSize = 1)
 public class Entrega {
 
     @Id
     @Column(name = "CODIGO")
+    @GeneratedValue(generator = "entrega", strategy = GenerationType.SEQUENCE)
     private int codigo;
 
     @Column(name = "CEP")
